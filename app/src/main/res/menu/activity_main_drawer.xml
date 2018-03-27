@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/nav_install"
+        android:icon="@drawable/icon_install_keyboard"
+        android:title="Install Keyboard"
+        app:actionLayout="@layout/menu_counter"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/nav_rate"
+        android:icon="@drawable/icon_rate"
+        android:title="Rate App"
+        app:actionLayout="@layout/menu_counter"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/nav_invite"
+        android:icon="@drawable/icon_invite_friends"
+        android:title="Invite friend via Facebook"
+        app:actionLayout="@layout/menu_counter"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/nav_share"
+        android:icon="@drawable/icon_share"
+        android:title="Share with friends"
+        app:actionLayout="@layout/menu_counter"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/nav_contact"
+        android:icon="@drawable/icon_contact"
+        android:title="Contact Us"
+        app:actionLayout="@layout/menu_counter"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/nav_privacy"
+        android:icon="@drawable/icon_share"
+        android:title="Privacy Policy"
+        app:actionLayout="@layout/menu_counter"
+        app:showAsAction="always"/>
+
+</menu>

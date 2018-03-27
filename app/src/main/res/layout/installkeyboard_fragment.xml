@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/circular_logo" />
+
+        <TextView android:textSize="24dp"
+            android:textStyle="bold"
+            android:textColor="@color/candidate_other"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="@string/install_keyboard_info0" />
+
+        <TextView android:textSize="16dp"
+            android:textStyle="bold"
+            android:textColor="@color/candidate_other"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textAlignment="center"
+            android:text="@string/install_keyboard_info1" />
+
+        <TextView android:textSize="12dp"
+            android:textColor="@color/candidate_other"
+            android:id="@+id/nav_by"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:textAlignment="center"
+            android:text="@string/install_keyboard_info2" />
+
+        <Button
+            android:textColor="@drawable/selector_install_button_color"
+            android:id="@+id/btnGoToInputSettings"
+            android:background="@drawable/selector_install_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="5dp"
+            android:text="@string/set_enabled" />
+
+        <Button
+            android:enabled="false"
+            android:textColor="@drawable/selector_install_button_color"
+            android:id="@+id/btnSelectKeyboard"
+            android:background="@drawable/selector_install_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="5dp"
+            android:text="@string/select_keyboard" />
+
+        <Button android:id="@+id/btnstartemoji"
+            android:enabled="false"
+            android:textColor="@drawable/selector_install_button_color"
+            android:background="@drawable/selector_install_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="5dp"
+            android:text="@string/select_keyboard_finished" />
+
+    </LinearLayout>
+</ScrollView>

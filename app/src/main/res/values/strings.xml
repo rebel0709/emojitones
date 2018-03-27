@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Emojitones</string>
+    <string name="emojitones_ime">Emojitones IME</string>
+    <string name="subtype_en_US">English (US)</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="install_keyboard_title">How to Install</string>
+    <string name="install_keyboard_info0">Emojitones</string>
+    <string name="install_keyboard_info1">Install Emojitones Keyboard</string>
+    <string name="install_keyboard_info2">Tap each button to follow steps to install\n Emojitones</string>
+
+    <string name="select_keyboard">STEP 2: SELECT Emojitones</string>
+    <string name="select_keyboard_finished">STEP 3: START USING Emojitones</string>
+    <string name="set_enabled">STEP 1: ENABLE Emojitones</string>
+
+
+    <string name="code_switch_lang">204</string>
+
+    <string name="action_settings">Settings</string>
+
+
+    <string name="label_go_key">Go</string>
+    <string name="label_next_key">Next</string>
+    <string name="label_send_key">Send</string>
+
+</resources>

@@ -21,4 +21,9 @@
     <string name="setting_change_icon_set_key">icon_set</string>
     <string name="setting_change_icon_set_value_google">Google</string>
     <string name="setting_change_icon_set_value_apple">Apple</string>
+
+    <string name="label_go_key">Go</string>
+    <string name="label_send_key">Send</string>
+    <string name="label_next_key">Next</string>
+    <string name="code_switch_lang">204</string>
 </resources>

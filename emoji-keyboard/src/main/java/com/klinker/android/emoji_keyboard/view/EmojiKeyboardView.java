@@ -9,8 +9,12 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.astuetz.PagerSlidingTabStrip;
 import com.athbk.ultimatetablayout.IFTabAdapter;
@@ -19,12 +23,13 @@ import com.klinker.android.emoji_keyboard.EmojiKeyboardService;
 import com.klinker.android.emoji_keyboard.adapter.EmojiPagerAdapter;
 import com.klinker.android.emoji_keyboard_trial.R;
 
-public class EmojiKeyboardView extends View implements SharedPreferences.OnSharedPreferenceChangeListener{
+public class EmojiKeyboardView extends View implements SharedPreferences.OnSharedPreferenceChangeListener, View.OnClickListener{
 
     private ViewPager viewPager;
-    //private PagerSlidingTabStrip pagerSlidingTabStrip;
-    UltimateTabLayout pagerSlidingTabStrip;
-    private LinearLayout layout;
+    /*private PagerSlidingTabStrip pagerSlidingTabStrip;
+    UltimateTabLayout pagerSlidingTabStrip;*/
+    //private LinearLayout layout;
+    private FrameLayout layout;
 
     private EmojiPagerAdapter emojiPagerAdapter;
     private EmojiKeyboardService emojiKeyboardService;
@@ -43,42 +48,33 @@ public class EmojiKeyboardView extends View implements SharedPreferences.OnShare
         super(context, attrs, defStyleAttr);
         initialize(context);
     }
-
+    ImageView imvSwitchKeyboard, imvSelKeyboard, imvRecent, imvAllEmoji, imvBackspace;
+    TextView tvShare;
     private void initialize(Context context) {
 
         emojiKeyboardService = (EmojiKeyboardService) context;
 
         LayoutInflater inflater = (LayoutInflater)   getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        layout = (LinearLayout) inflater.inflate(R.layout.keyboard_main, null);
+        //layout = (LinearLayout) inflater.inflate(R.layout.keyboard_main, null);
+        layout = (FrameLayout) inflater.inflate(R.layout.keyboard_main, null);
 
         viewPager = (ViewPager) layout.findViewById(R.id.emojiKeyboard);
-
-        //pagerSlidingTabStrip = (PagerSlidingTabStrip) layout.findViewById(R.id.emojiCategorytab);
-        pagerSlidingTabStrip = (UltimateTabLayout) layout.findViewById(R.id.emojiCategorytab);
-
-        //pagerSlidingTabStrip.setIndicatorColor(getResources().getColor(R.color.pager_color));
+        imvSwitchKeyboard =(ImageView)layout.findViewById(R.id.switch_keyboard);imvSwitchKeyboard.setOnClickListener(this);
+        tvShare = (TextView)layout.findViewById(R.id.tv_share);tvShare.setOnClickListener(this);
+        imvSelKeyboard = (ImageView)layout.findViewById(R.id.select_keyboard);imvSelKeyboard.setOnClickListener(this);
+        imvRecent = (ImageView)layout.findViewById(R.id.recent);imvRecent.setOnClickListener(this);
+        imvAllEmoji=(ImageView)layout.findViewById(R.id.all_emoji);imvAllEmoji.setOnClickListener(this);
+        imvBackspace =(ImageView)layout.findViewById(R.id.backspace);imvBackspace.setOnClickListener(this);
 
         emojiPagerAdapter = new EmojiPagerAdapter(context, viewPager, height);
 
         viewPager.setAdapter(emojiPagerAdapter);
 
-        setupDeleteButton();
-
-        pagerSlidingTabStrip.setViewPager(viewPager, new IFTabAdapter() {
-            @Override
-            public String getTitle(int i) {
-                return "";
-            }
-
-            @Override
-            public int getIcon(int i) {
-                return R.drawable.ic_tab_emojitones;
-            }
-        });
-
+        //setupDeleteButton();
 
         viewPager.setCurrentItem(1);
+        imvAllEmoji.setSelected(true);
 
         PreferenceManager.getDefaultSharedPreferences(context).registerOnSharedPreferenceChangeListener(this);
     }
@@ -92,7 +88,7 @@ public class EmojiKeyboardView extends View implements SharedPreferences.OnShare
         viewPager.refreshDrawableState();
     }
 
-    private void setupDeleteButton() {
+    /*private void setupDeleteButton() {
 
         Button delete = (Button) layout.findViewById(R.id.deleteButton);
 
@@ -110,7 +106,7 @@ public class EmojiKeyboardView extends View implements SharedPreferences.OnShare
                 return false;
             }
         });
-    }
+    }*/
 
 
     private int width;
@@ -133,6 +129,32 @@ public class EmojiKeyboardView extends View implements SharedPreferences.OnShare
             emojiPagerAdapter = new EmojiPagerAdapter(getContext(), viewPager, height);
             viewPager.setAdapter(emojiPagerAdapter);
             this.invalidate();
+        }
+    }
+
+    @Override
+    public void onClick(View view) {
+        int id = view.getId();
+        if (id == R.id.switch_keyboard) {
+            emojiKeyboardService.backToKeyBoard();
+        } else if (id == R.id.tv_share) {
+
+        }else if (id == R.id.select_keyboard) {
+            InputMethodManager ime=(InputMethodManager)emojiKeyboardService.getSystemService(Context.INPUT_METHOD_SERVICE);
+            if(ime!=null) {
+                ime.showInputMethodPicker();
+            }
+        }else if (id == R.id.recent) {
+            imvRecent.setSelected(true);
+            imvAllEmoji.setSelected(false);
+            viewPager.setCurrentItem(0);
+        }else if (id == R.id.all_emoji) {
+            imvRecent.setSelected(false);
+            imvAllEmoji.setSelected(true);
+            viewPager.setCurrentItem(1);
+        }else if (id == R.id.backspace) {
+            //emojiKeyboardService.sendDownAndUpKeyEvent(KeyEvent.KEYCODE_DEL, true);
+            emojiKeyboardService.sendDownAndUpKeyEvent(KeyEvent.KEYCODE_DEL, 1);
         }
     }
 }
